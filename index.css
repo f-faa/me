@@ -1,67 +1,115 @@
+/* Base styles */
 body {
     font-family: Inter, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: #333; /* Light mode text color */
+    transition: color 0.3s ease; /* Add transition for text color */
+}
+
+/* Apply dark mode to body when .dark-mode is present */
+
+/* Base button styles */
+.custom-button {
+    padding: 0.5rem 0.75rem; /* px-2 py-1 */
+    border: 1px solid #ccc; /* border border-stone-400 */
+    border-radius: 9999px; /* rounded-full */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* drop-shadow-sm */
+    font-size: 0.875rem; /* text-sm */
+    color: #333; /* text-stone-800 */
+    background-color: rgba(255, 255, 255, 0.4); /* bg-white/40 */
+    backdrop-filter: blur(16px); /* backdrop-blur-lg */
+    transition: border-color 0.3s ease; /* transition-colors */
+}
+
+/* Dark mode styles for the button */
+.dark-mode .custom-button {
+    color: #fff; /* dark:text-white */
+    background-color: rgba(0, 0, 0, 0.4); /* dark:bg-black/40 */
+    border-color: #888; /* dark:border-stone-400 */
+}
+
+/* Button hover styles */
+.custom-button:hover {
+    border-color: #bbb; /* hover:border-stone-300 */
+}
+
+/* Dark mode button hover styles */
+.dark-mode .custom-button:hover {
+    border-color: #a0a0a0; /* dark:hover:border-stone-400 */
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust as needed */
+    position: relative; /* Ensure proper positioning of child elements */
+}
+
+.background1 {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: white !important;
+    transition: background-color 1s ease; /* Adjust transition duration here */
+}
+
+.dark-mode .background1 {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: black !important;
+    transition: background-color 0.5s ease; /* Adjust transition duration here */
+}
+
+.background2 {
+    position: absolute;
+    inset: 0;
+    z-index: -1; /* Ensure the background is behind other content */
+    animation: jumbo 60s linear infinite;
+    filter: blur(0px) invert(100%);
+    mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
+    pointer-events: none; 
+    background-image: 
+        repeating-linear-gradient(
+            100deg,
+            #b76cff 10%, /* Purple */
+            #38bdf8 25%, /* Blue */
+            #b76cff 55%, /* Purple */
+            #38bdf8 25%, /* Blue */
+            #f9676b 10%  /* Red */
+        );
+    filter: blur(10px) opacity(50%) saturate(200%);
+    background-size: 200%;
+    z-index: -1; /* Move background behind the white and black layers */
+}
+
+.background2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -2; /* Move white layer behind the background */
+}
+
+.container {
+    text-align: center; /* Center the text inside container */
+}
+
+/* Apply dark mode to text when .dark-mode is present */
+.dark-mode .title {
+    color: #fff; /* Dark mode text color */
 }
 
 @keyframes jumbo {
-    from {
-        background-position: 50% 50%, 50% 50%;
+    0% {
+        background-position: 0px 50%; /* Corrected syntax for background-position */
     }
-    to {
-        background-position: 350% 50%, 350% 50%;
+    100% {
+        background-position: 200% 50%;
     }
-}
-
-.jumbo {
-    --stripes: repeating-linear-gradient(
-        100deg,
-        #fff 0%,
-        #fff 7%,
-        transparent 10%,
-        transparent 12%,
-        #fff 16%
-    );
-    --stripesDark: repeating-linear-gradient(
-        100deg,
-        #000 0%,
-        #000 7%,
-        transparent 10%,
-        transparent 12%,
-        #000 16%
-    );
-    --rainbow: repeating-linear-gradient(
-        100deg,
-        #60a5fa 10%,
-        #e879f9 15%,
-        #60a5fa 20%,
-        #5eead4 25%,
-        #60a5fa 30%
-    );
-    background-image: var(--stripes), var(--rainbow);
-    background-size: 300%, 200%;
-    background-position: 50% 50%, 50% 50%;
-
-    filter: blur(10px) invert(100%);
-
-    mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
-
-    pointer-events: none;
-}
-
-.jumbo::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: var(--stripes), var(--rainbow);
-    background-size: 200%, 100%;
-    animation: jumbo 60s linear infinite;
-    background-attachment: fixed;
-    mix-blend-mode: difference;
-}
-
-.dark .jumbo {
-    background-image: var(--stripesDark), var(--rainbow);
-    filter: blur(10px) opacity(50%) saturate(200%);
-}
-.dark .jumbo::after {
-    background-image: var(--stripesDark), var(--rainbow);
 }

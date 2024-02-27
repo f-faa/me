@@ -69,7 +69,6 @@ main {
     inset: 0;
     z-index: -1; /* Ensure the background is behind other content */
     animation: jumbo 60s linear infinite;
-    filter: blur(0px) invert(100%);
     mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
     pointer-events: none; 
     background-image: 

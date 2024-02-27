@@ -1,25 +1,10 @@
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-    tailwind.config = {
-      darkMode: "class",
-    }
-
-    function toggleTheme() {
-        document.documentElement.classList.toggle('dark');
-    }
-</script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
 <main>
-    <div class="relative flex flex-col h-[100vh] items-center justify-center bg-white dark:bg-black transition-bg">
-        <div class="absolute inset-0 overflow-hidden">
-            <div class="jumbo absolute -inset-[10px] opacity-50"></div>
-        </div>
-        <h1 class="relative flex items-center text-5xl font-bold text-gray-800 dark:text-white dark:opacity-80 transition-colors">
-            faa.
-        </h1>
-        <div class="mt-4">
-            <button onclick="toggleTheme()" class="px-2 py-1 border border-stone-400 rounded-full drop-shadow-sm text-sm text-stone-800 dark:text-white bg-white/40 dark:bg-black/40 backdrop-blur-lg hover:border-stone-300 transition-colors dark:border-stone-500 dark:hover:border-stone-400">⬤</button>
+    <div class="background1"></div>
+    <div class="background2"></div>
+    <div class="container">
+        <h1 class="title">faa.</h1>
+        <div class="toggle-container">
+            <button onclick="toggleTheme()" class="custom-button">⬤</button>
         </div>
     </div>
 </main>

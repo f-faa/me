@@ -28,6 +28,33 @@ h1 {
     transition: color 0.5s ease;
 }
 
+.osu-link {
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 1;
+    background-image: linear-gradient(to right, #00b7ff, #ea00ff); /* Define your gradient colors */
+    background-clip: text; /* Standard property for background-clip */
+    -webkit-background-clip: text; /* Clip the background to the text */
+    -webkit-text-fill-color: transparent; /* Hide the text color */
+}
+
+.osu-link:hover {
+    background-image: linear-gradient(to right, #ea00ff, #00b7ff); /* Change gradient colors on hover */
+}
+
+.dark-mode .osu-link {
+    background-image: linear-gradient(to right, #ea00ff, #00b7ff); /* Define your gradient colors for dark mode */
+}
+
+.dark-mode .osu-link:hover {
+    background-image: linear-gradient(to right, #00b7ff, #ea00ff); /* Change gradient colors on hover in dark mode */
+}
+
 /* Base button styles */
 .switch {
     --font-color: #323232;

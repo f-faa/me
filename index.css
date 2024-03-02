@@ -5,6 +5,19 @@ body {
     padding: 0;
 }
 
+.soft-glow-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    mix-blend-mode: soft-light;
+    filter: blur(100px);
+    pointer-events: none; /* Ensure the overlay doesn't block interaction with underlying content */
+    z-index: 0; /* Ensure the overlay is positioned behind the content */
+}
+
 h1 {
     color: #333;
     transition: color 1.25s ease;
@@ -147,7 +160,7 @@ main {
     inset: 0;
     z-index: -1; /* Ensure the background is behind other content */
     animation: jumbo 30s linear infinite;
-    mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
+    mask-image: radial-gradient(ellipse at 100% 0%, black 35%, transparent 75%);
     pointer-events: none; 
     background-image: 
         repeating-linear-gradient(
@@ -158,7 +171,7 @@ main {
             #38bdf8 25%, /* Blue */
             #f9676b 10%  /* Red */
         );
-    filter: blur(10px) opacity(50%) saturate(200%);
+    filter: blur(40px) opacity(40%) saturate(250%);
     background-size: 200%;
     z-index: -1; /* Move background behind the white and black layers */
 }
@@ -200,4 +213,8 @@ main {
     100% {
         background-position: 91% 0%;
     }
+}
+
+.soft-glow {
+    filter: blur(10px) brightness(150%);
 }

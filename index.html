@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="notranslate" translate="no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
   <meta name="google" content="notranslate" />
   <title>faa.</title>
-<link type="text/css" rel="stylesheet" href="index.css">
-<script src="index.js"></script>
+  <link type="text/css" rel="stylesheet" href="index.css">
+  <script src="index.js"></script>
 </head>
 <main>
+   <body class="dark-mode">
     <div class="background1"></div>
     <div class="background2"></div>
     <div class="container">
-        <h1 class="title">faa.</h1>
+        <h1><strong>faa.</strong></h1>
         <div class="toggle-container">
-            <button onclick="toggleTheme()" class="custom-button">⬤</button>
+            <label class="switch">
+                <input onclick="toggleTheme()" class="toggle" type="checkbox">
+                <span class="slider"></span>
+                <span class="card-side"></span>
+            </label>
         </div>
     </div>
+   </body>
 </main>
 </html>

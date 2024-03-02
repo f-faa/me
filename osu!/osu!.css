@@ -1,0 +1,220 @@
+/* Base styles */
+body {
+    font-family: Inter, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.soft-glow-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    mix-blend-mode: soft-light;
+    filter: blur(100px);
+    pointer-events: none; /* Ensure the overlay doesn't block interaction with underlying content */
+    z-index: 0; /* Ensure the overlay is positioned behind the content */
+}
+
+h1 {
+    color: #333;
+    transition: color 1.25s ease;
+}
+
+.dark-mode h1 {
+    color: #fff;
+    transition: color 0.5s ease;
+}
+
+/* Base button styles */
+.switch {
+    --font-color: #323232;
+    --font-color-sub: #666;
+    --bg-color: #fff;
+    --bg-color-alt: #666;
+    --main-color: #323232;
+    position: absolute; /* Position the button absolutely */
+    top: 20px; /* Distance from the top of the page */
+    right: 20px; /* Distance from the right of the page */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 50px;
+    height: 20px;
+    transition: 2s ease;
+}
+
+.switch::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+        100deg,
+        #b76cff 10%,
+        #38bdf8 25%,
+        #b76cff 55%,
+        #38bdf8 25%,
+        #f9676b 10% 
+    );
+    animation: jumbo 1s linear infinite; /* Apply animation to the background */
+    background-size: 200%; /* Adjust background size */
+    border-radius: 24px;
+    transition: 2s linear;
+}
+
+.toggle {
+    display: none; /* Hide the checkbox */
+}
+
+.slider {
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bg-colorcolor);
+    transition: 0.3s ease;
+}
+
+.slider:before {
+    box-sizing: border-box;
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    left: -2px;
+    bottom: 2px;
+    background-color: var(--bg-color);
+    box-shadow: 0 3px 0 var(--main-color);
+    transition: 0.45s cubic-bezier(0.5, -0.52, 0.47, 1.51);
+}
+
+.toggle:checked + .slider {
+    background-color: var(--input-focus); /* Set background-color when checked */
+    transition: background-image .5s ease; /* Transition background-color */
+}
+
+.toggle:checked + .slider:before {
+    transform: translateX(30px);
+}
+
+.main-switch {
+    /* Additional transition for main switch element */
+    transition: background-color 0.3s ease;
+    background-color: var(--bg-color); /* Set default background-color */
+}
+
+.dark-mode .switch::before {
+    background-image: repeating-linear-gradient(
+        100deg,
+      #FFFFFF 10%,
+      #00CCFF 25%,
+      #FFFFFF 55%
+    );
+}
+
+.dark-mode .main-switch {
+    background-color: #000; /* Dark mode background color for main switch */
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust as needed */
+    position: relative; /* Ensure proper positioning of child elements */
+}
+
+.background1 {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: white !important;
+    transition: background-color 1s ease; /* Adjust transition duration here */
+}
+
+.dark-mode .background1 {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: black !important;
+    transition: background-color 0.5s ease; /* Adjust transition duration here */
+}
+
+.background2 {
+    position: absolute;
+    inset: 0;
+    z-index: -1; /* Ensure the background is behind other content */
+    animation: jumbo 30s linear infinite;
+    mask-image: radial-gradient(ellipse at 100% 0%, black 35%, transparent 75%);
+    pointer-events: none; 
+    background-image: 
+        repeating-linear-gradient(
+            100deg,
+            #b76cff 10%, /* Purple */
+            #38bdf8 25%, /* Blue */
+            #b76cff 55%, /* Purple */
+            #38bdf8 25%, /* Blue */
+            #f9676b 10%  /* Red */
+        );
+    filter: blur(40px) opacity(40%) saturate(250%);
+    background-size: 200%;
+    z-index: -1; /* Move background behind the white and black layers */
+}
+
+.background2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -2; /* Move white layer behind the background */
+}
+
+.container {
+    text-align: center; /* Center the text inside container */
+}
+
+/* Apply dark mode to text when .dark-mode is present */
+.dark-mode .title {
+    color: #fff; /* Dark mode text color */
+}
+
+/* Additional styles for mobile devices */
+@media screen and (max-width: 600px) {
+    body .switch {
+        top: 20px; /* Adjust position of the switch */
+        right: 20px; /* Adjust position of the switch */
+        width: 50px; /* Adjust width of the switch */
+        height: 20px; /* Adjust height of the switch */
+        gap: 30px; /* Adjust gap between elements */
+    }
+}
+
+@keyframes jumbo {
+    0% {
+        background-position: 0px 0%; /* Corrected syntax for background-position */
+    }
+    100% {
+        background-position: 91% 0%;
+    }
+}
+
+.soft-glow {
+    filter: blur(10px) brightness(150%);
+}

@@ -28,6 +28,26 @@ h1 {
     transition: color 0.5s ease;
 }
 
+h2 {
+    position: absolute;
+    color: #333;
+    transition: color 1.25s ease;
+    top: 50.5%; /* Adjust the top position */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%) scale(0.8); /* Adjust horizontally to center */
+    width: 80%; /* Adjust width to be 80% of the viewport width */
+}
+
+.dark-mode h2 {
+    position: absolute;
+    color: #fff;
+    transition: color 0.5s ease;
+    top: 50.5%; /* Adjust the top position */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%) scale(0.8); /* Adjust horizontally to center */
+    width: 80%; /* Adjust width to be 80% of the viewport width */
+}
+
 /* Base button styles */
 .switch {
     --font-color: #323232;

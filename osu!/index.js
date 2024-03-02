@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Call the function with the element you want to disable selection for
     disableSelection(document.querySelector('h1'));
+    disableSelection(document.querySelector('h2'));
 });
 
 function disableSelection(element) {
